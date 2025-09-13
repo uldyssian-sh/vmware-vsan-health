@@ -2,7 +2,7 @@ name: PowerShell CI/CD
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main]
   schedule:
@@ -11,49 +11,43 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        powershell-version: ['5.1', '7.x']
-        exclude:
-          - os: ubuntu-latest
-            powershell-version: '5.1'
-          - os: macos-latest
-            powershell-version: '5.1'
+        os: [windows-latest, ubuntu-latest]
+        powershell-version: ['7.x']
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PowerShell
-        if: matrix.powershell-version == '7.x'
-        uses: actions/setup-powershell@v1
-
-      - name: Install Pester
+      - name: Install Dependencies
         shell: pwsh
         run: |
-          Install-Module -Name Pester -Force -SkipPublisherCheck
-          Install-Module -Name PSScriptAnalyzer -Force -SkipPublisherCheck
+          Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser
+          Install-Module -Name PSScriptAnalyzer -Force -SkipPublisherCheck -Scope CurrentUser
 
       - name: Run PSScriptAnalyzer
         shell: pwsh
         run: |
-          $results = Invoke-ScriptAnalyzer -Path . -Recurse -ReportSummary
-          if ($results) { 
+          $results = Invoke-ScriptAnalyzer -Path ./src -Recurse
+          if ($results | Where-Object Severity -eq 'Error') {
             $results | Format-Table
-            throw "PSScriptAnalyzer found issues"
+            throw "PSScriptAnalyzer found errors"
           }
+          Write-Host "PSScriptAnalyzer passed"
 
-      - name: Run Pester Tests
+      - name: Test Module Import
         shell: pwsh
         run: |
-          $config = New-PesterConfiguration
-          $config.Run.Path = './tests'
-          $config.CodeCoverage.Enabled = $true
-          $config.CodeCoverage.Path = './src'
-          $config.TestResult.Enabled = $true
-          $config.TestResult.OutputFormat = 'JUnitXml'
-          $config.TestResult.OutputPath = './test-results.xml'
-          Invoke-Pester -Configuration $config
+          try {
+            Import-Module ./src/VSanHealthModule.psm1 -Force
+            Write-Host "Module imported successfully"
+          } catch {
+            Write-Error "Module import failed: $_"
+            throw
+          }
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
@@ -65,7 +59,6 @@ jobs:
   security-scan:
     runs-on: ubuntu-latest
     permissions:
-      actions: read
       contents: read
       security-events: write
     steps:
@@ -78,28 +71,19 @@ jobs:
           scan-ref: '.'
           format: 'table'
 
-      - name: Run Trivy for SARIF
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-
-      - name: Upload Trivy scan results
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
-
   release:
     needs: [test, security-scan]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4

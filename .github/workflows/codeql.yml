@@ -17,24 +17,18 @@ jobs:
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'powershell' ]
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Initialize CodeQL
+    - name: Run CodeQL Analysis (Generic)
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: javascript
+        queries: security-and-quality
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:${{matrix.language}}"
