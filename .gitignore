@@ -1,0 +1,61 @@
+# PowerShell
+*.ps1xml
+*.psd1
+*.psm1~
+*.ps1~
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Credentials and secrets
+*.xml
+*credential*
+*secret*
+*password*
+.env
+.env.local
+
+# Test results
+TestResults/
+test-results.xml
+coverage.xml
+*.trx
+
+# Build artifacts
+build/
+dist/
+out/
+artifacts/
+
+# IDE files
+.vscode/
+.vs/
+*.suo
+*.user
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# PowerShell Gallery
+*.nupkg
+
+# Documentation build
+docs/_build/
+site/
+
+# Coverage reports
+coverage/
+*.coverage
+
+# Backup files
+*.bak
+*.backup

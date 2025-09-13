@@ -1,8 +1,13 @@
-# vSAN Health Check Script (PowerCLI)
+# VMware vSAN Health Monitor
 
-**Author:** LT  
-**Version:** 1.0  
-**Target:** VMware vSphere 7 / 8  
+[![PowerShell CI/CD](https://github.com/uldyssian-sh/vmware-vsan-health/actions/workflows/powershell-ci.yml/badge.svg)](https://github.com/uldyssian-sh/vmware-vsan-health/actions/workflows/powershell-ci.yml)
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/v/VSanHealthModule)](https://www.powershellgallery.com/packages/VSanHealthModule)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Security Rating](https://img.shields.io/badge/Security-A-green)](docs/SECURITY.md)
+
+**Version:** 2.0.0  
+**Target:** VMware vSphere 7.x / 8.x  
+**PowerShell:** 5.1+ / 7.x  
 
 ---
 
@@ -21,15 +26,33 @@ Use it at your own risk. You are solely responsible for reviewing, testing, and 
 
 ## Overview
 
-This script provides a **read-only** health check for VMware vSAN clusters on vSphere 7.x and 8.x.  
-It is designed to run via **PowerCLI** and outputs a detailed report directly to the console, with an optional JSON export.  
+Enterprise-grade PowerShell module for comprehensive VMware vSAN cluster health monitoring. Designed for production environments with advanced security, performance optimizations, and extensive reporting capabilities.
 
-The script:
-- Runs vSAN health checks at the cluster level (using PowerCLI cmdlets or the vSAN Health API).
-- Summarizes failing health groups and checks.
-- Verifies the status of important ESXi services (e.g. `vpxa`, `vmware-fdm`, `vsanmgmt`).
-- Reports optional resync activity (if available).
-- **Does not change any configuration**. Safe to run with read-only permissions.
+### Key Features
+
+🔒 **Security First**
+- Encrypted credential management
+- Input validation and sanitization
+- Secure logging (no sensitive data exposure)
+- Role-based access control support
+
+⚡ **Performance Optimized**
+- Parallel health check processing
+- Configurable concurrency limits
+- Intelligent caching mechanisms
+- Timeout and retry logic
+
+📊 **Comprehensive Reporting**
+- Multiple output formats (Console, JSON, HTML, CSV)
+- Structured logging with configurable levels
+- Historical trend analysis
+- Integration-ready APIs
+
+🛡️ **Production Ready**
+- Extensive error handling
+- Comprehensive test coverage
+- CI/CD pipeline integration
+- Monitoring and alerting support
 
 ---
 
