@@ -1,5 +1,4 @@
 #Requires -Version 5.1
-#Requires -Modules VMware.VimAutomation.Core, VMware.VimAutomation.Storage
 
 <#
 .SYNOPSIS
