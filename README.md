@@ -28,6 +28,8 @@ Use it at your own risk. You are solely responsible for reviewing, testing, and 
 
 Enterprise-grade PowerShell module for comprehensive VMware vSAN cluster health monitoring. Designed for production environments with advanced security, performance optimizations, and extensive reporting capabilities.
 
+**Author**: LT - [GitHub Profile](https://github.com/uldyssian-sh)
+
 ### Key Features
 
 🔒 **Security First**
