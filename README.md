@@ -1,7 +1,7 @@
 # VMware vSAN Health Monitor
 
 ![GitHub stars](https://img.shields.io/github/stars/uldyssian-sh/vmware-vsan-health)
-![GitHub forks](https://img.shields.io/github/forks/uldyssian-sh/vmware-vsan-health)
+![Tests](https://github.com/uldyssian-sh/vmware-vsan-health/actions/workflows/test.yml/badge.svg)![GitHub forks](https://img.shields.io/github/forks/uldyssian-sh/vmware-vsan-health)
 ![License](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health)
 
 **Version:** 2.0.0  
