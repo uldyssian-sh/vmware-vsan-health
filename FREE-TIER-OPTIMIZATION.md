@@ -1,15 +1,17 @@
-# Free Tier Optimization
+# Free Tier Optimization - Weekly Schedule
 
-Repository optimized for **100% GitHub free tier usage**.
+Repository optimized for **100% GitHub free tier usage** with weekly scheduling.
 
-## Cost Reduction:
-- **Before**: $6.25/month
-- **After**: $0.00/month
+## Weekly Schedule:
+- 📅 **Frequency**: Weekly (Sunday 2:00 AM)
+- ⏱️ **Timeout**: 2 minutes maximum
+- 🖥️ **Runner**: ubuntu-latest only
+- 💰 **Cost**: $0.00/month
 
-## Optimizations:
-- ✅ Weekly workflows only (Sunday 2 AM)
-- ✅ 2-minute timeout limit
-- ✅ Minimal ubuntu-latest runner
-- ✅ No packages or LFS
+## Benefits:
+- ✅ Minimal Actions minutes usage
+- ✅ Reliable weekly monitoring
+- ✅ No workflow failures
+- ✅ 100% free tier compliant
 
-100% free tier compliant.
+**Next run**: Every Sunday at 2:00 AM UTC
