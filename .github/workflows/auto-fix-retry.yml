@@ -1,0 +1,25 @@
+name: Auto Fix with Retry
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_run:
+    workflows: ["Auto Fix with Retry"]
+    types: [completed]
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        command: |
+          npm audit fix --force || pip install safety && safety check --auto-fix || terraform fmt -recursive .
+    - uses: peter-evans/create-pull-request@v5
+      with:
+        title: 'Auto-fix: Retry'
