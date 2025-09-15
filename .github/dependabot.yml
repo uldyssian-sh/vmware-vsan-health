@@ -4,14 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    commit-message:
-      prefix: "ci"
-      include: "scope"
-  
-  - package-ecosystem: "nuget"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "terraform"
     directory: "/"
     schedule:
       interval: "weekly"
-    commit-message:
-      prefix: "deps"
-      include: "scope"
+    open-pull-requests-limit: 3
