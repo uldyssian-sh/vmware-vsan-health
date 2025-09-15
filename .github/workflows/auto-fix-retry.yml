@@ -20,6 +20,6 @@ jobs:
         max_attempts: 3
         command: |
           npm audit fix --force || pip install safety && safety check --auto-fix || terraform fmt -recursive .
-    - uses: peter-evans/create-pull-request@v5
+    - uses: peter-evans/create-pull-request@v7
       with:
         title: 'Auto-fix: Retry'
