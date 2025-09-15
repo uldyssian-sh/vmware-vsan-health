@@ -4,9 +4,9 @@
 ![Tests](https://github.com/uldyssian-sh/vmware-vsan-health/actions/workflows/test.yml/badge.svg)![GitHub forks](https://img.shields.io/github/forks/uldyssian-sh/vmware-vsan-health)
 ![License](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health)
 
-**Version:** 2.0.0  
-**Target:** VMware vSphere 7.x / 8.x  
-**PowerShell:** 5.1+ / 7.x  
+**Version:** 2.0.0
+**Target:** VMware vSphere 7.x / 8.x
+**PowerShell:** 5.1+ / 7.x
 
 ## Overview
 

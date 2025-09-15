@@ -36,7 +36,7 @@ $services = Get-VSanHostServices -VMHost $host
 ```json
 {
   "Cluster": "string",
-  "Method": "PowerCLI-Cmdlet|vSAN-API", 
+  "Method": "PowerCLI-Cmdlet|vSAN-API",
   "Duration": "TimeSpan",
   "Result": "object",
   "Timestamp": "DateTime"

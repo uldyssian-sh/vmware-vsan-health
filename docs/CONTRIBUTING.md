@@ -114,10 +114,10 @@ Describe "Function-Name" {
         It "Should do something" {
             # Arrange
             $input = "test"
-            
+
             # Act
             $result = Invoke-Function -Parameter $input
-            
+
             # Assert
             $result | Should -Be "expected"
         }
