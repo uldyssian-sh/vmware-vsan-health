@@ -1,5 +1,22 @@
 # VMware vSAN Health Monitor
 
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
+
+## Prerequisites
+
+Before using this project, ensure you have:
+- Required tools and dependencies
+- Proper access credentials
+- System requirements met
+
+
 ![GitHub stars](https://img.shields.io/github/stars/uldyssian-sh/vmware-vsan-health)
 ![Tests](https://github.com/uldyssian-sh/vmware-vsan-health/actions/workflows/test.yml/badge.svg)![GitHub forks](https://img.shields.io/github/forks/uldyssian-sh/vmware-vsan-health)
 ![License](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health)
@@ -103,3 +120,21 @@ MIT License - See LICENSE file for details
 ## Contributing
 
 Contributions welcome via pull requests and issues.
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
+- How to submit issues
+- How to propose changes
+- Code style guidelines
+- Review process
+
+## Support
+
+- 📖 [Wiki Documentation](../../wiki)
+- 💬 [Discussions](../../discussions)
+- 🐛 [Issue Tracker](../../issues)
+- 🔒 [Security Policy](SECURITY.md)
+
+---
+**Made with ❤️ for the community**
