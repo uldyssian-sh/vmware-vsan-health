@@ -7,3 +7,8 @@
 - Core functionality
 - Error handling
 - Performance optimization
+
+## Testing Framework
+- Unit tests
+- Integration tests
+- Performance tests
