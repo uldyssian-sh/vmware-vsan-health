@@ -122,4 +122,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file for details.<!-- Deployment trigger Wed Sep 17 22:41:02 CEST 2025 -->
