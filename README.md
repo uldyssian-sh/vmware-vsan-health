@@ -1,31 +1,40 @@
-# vmware vsan health
+# VMware vSAN Health Monitoring
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/uldyssian-sh/vmware-vsan-health)](https://github.com/uldyssian-sh/vmware-vsan-health/issues)
-[![GitHub stars](https://img.shields.io/github/stars/uldyssian-sh/vmware-vsan-health)](https://github.com/uldyssian-sh/vmware-vsan-health/stargazers)
-[![Security](https://img.shields.io/badge/Security-Enterprise-blue.svg)](SECURITY.md)
+<div align="center">
 
-## 🎯 Overview
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  vSAN Health Monitoring                     │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │ vSAN        │────│ Health      │────│ Alert       │     │
+│  │ Cluster     │    │ Monitor     │    │ Manager     │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘     │
+│         │                   │                   │          │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │ Disk        │    │ Performance │    │ Predictive  │     │
+│  │ Groups      │    │ Metrics     │    │ Analytics   │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────────────────────────────────────┘
+```
+  
+  [![vSAN](https://img.shields.io/badge/vSAN-8.0+-00A1C9.svg)](https://www.vmware.com/products/vsan.html)
+  [![Health Check](https://img.shields.io/badge/Health-Monitoring-green.svg)](https://docs.vmware.com/en/VMware-vSAN/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</div>
 
-Professional vmware vsan health solution with enterprise-grade automation and security features.
+## 🏥 Overview
 
-## 📊 Repository Stats
+Comprehensive health monitoring and alerting system for VMware vSAN clusters. Proactive monitoring, automated remediation, and detailed reporting for optimal vSAN performance.
 
-- **Files:**       47
-- **Technologies:** PowerShell YAML Bash
-- **Type:** Infrastructure Automation
-- **Status:** Production Ready
+## 🎯 Key Features
 
-## ✨ Features
-
-- 🏗️ **Enterprise Architecture** - Production-ready infrastructure
-- 🔒 **Zero-Trust Security** - Comprehensive security controls
-- 🚀 **CI/CD Automation** - Automated deployment pipelines
-- 📊 **Monitoring & Observability** - Complete visibility
-- 🤖 **AI Integration** - GitHub Copilot & Amazon Q
-- 🔄 **Self-Healing** - Automatic error recovery
-- 📈 **Performance Optimized** - High-performance configurations
-- 🛡️ **Compliance Ready** - SOC2, GDPR, HIPAA standards
+- **Real-time Health Monitoring**: 24/7 cluster health surveillance
+- **Predictive Analytics**: Identify issues before they impact performance
+- **Automated Remediation**: Self-healing capabilities for common issues
+- **Performance Metrics**: Detailed IOPS, latency, and throughput analysis
+- **Capacity Planning**: Growth projections and recommendations
+- **Alert Management**: Multi-channel notifications (email, Slack, Teams)
 
 ## 🚀 Quick Start
 
@@ -34,44 +43,23 @@ Professional vmware vsan health solution with enterprise-grade automation and se
 git clone https://github.com/uldyssian-sh/vmware-vsan-health.git
 cd vmware-vsan-health
 
-# Setup environment
-chmod +x setup.sh
-./setup.sh
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure vCenter connection
+cp config/config.example.yml config/config.yml
+# Edit config.yml with your vCenter details
+
+# Run health check
+python vsan_health_monitor.py --cluster "Production-Cluster"
 ```
-
-
-## ⚡ PowerShell Scripts
-
-```powershell
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Run main script
-.\main.ps1
-```
-
 
 ## 📚 Documentation
 
-- [Installation Guide](docs/installation.md)
-- [Configuration Reference](docs/configuration.md)
-- [API Documentation](docs/api.md)
-- [Troubleshooting](docs/troubleshooting.md)
-- [Security Policy](SECURITY.md)
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+- [Installation Guide](https://github.com/uldyssian-sh/vmware-vsan-health/wiki/Installation)
+- [Configuration Reference](https://github.com/uldyssian-sh/vmware-vsan-health/wiki/Configuration)
+- [Health Checks Guide](https://github.com/uldyssian-sh/vmware-vsan-health/wiki/Health-Checks)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
-
-## 🆘 Support
-
-- 🐛 **Issues**: [GitHub Issues](https://github.com/uldyssian-sh/REPO_NAME/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/uldyssian-sh/REPO_NAME/wiki)
-
----
-
-⭐ **Star this repository if you find it helpful!**
+MIT License - see [LICENSE](LICENSE) file for details.
