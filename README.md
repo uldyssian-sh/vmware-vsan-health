@@ -53,10 +53,10 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## 📚 Documentation
 
-- [Installation Guide](docs/installation.md)
-- [Configuration Reference](docs/configuration.md)
-- [API Documentation](docs/api.md)
-- [Troubleshooting](docs/troubleshooting.md)
+- [Installation Guide](docs/INSTALLATION.md)
+- [Configuration Reference](docs/CONFIGURATION.md)
+- [API Documentation](docs/API.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Security Policy](SECURITY.md)
 
 ## 🤝 Contributing
@@ -69,8 +69,8 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 
 ## 🆘 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/uldyssian-sh/REPO_NAME/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/uldyssian-sh/REPO_NAME/wiki)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/uldyssian-sh/vmware-vsan-health/issues)
+- 📖 **Documentation**: [Wiki](https://github.com/uldyssian-sh/vmware-vsan-health/wiki)
 
 ---
 
