@@ -132,3 +132,31 @@ Comprehensive VMware vSAN health monitoring, performance analytics, and manageme
 
 Designed for GitHub Free tier with efficient resource usage and minimal operational overhead.
 
+
+
+## 🎯 Advanced Health Monitoring
+
+### Comprehensive Diagnostics
+- Cluster Health Assessment: Real-time monitoring
+- Performance Analytics: IOPS, latency analysis
+- Predictive Maintenance: Proactive detection
+- Capacity Planning: Storage forecasting
+
+### Automated Operations
+- Self-Healing: Automatic remediation
+- Maintenance Scheduling: Automated coordination
+- Alert Management: Intelligent filtering
+- Backup Validation: Integrity verification
+
+## 📊 Health Metrics
+- Disk Health: SMART, Wear Level monitoring
+- Network: Latency, Bandwidth analysis
+- Storage: Utilization, IOPS tracking
+- Cluster: Availability, Performance metrics
+
+## 🚀 Deployment
+```powershell
+.\Install-vSANHealthAgent.ps1 -vCenter vcenter.domain.com
+.\Configure-Monitoring.ps1 -AlertEmail admin@domain.com
+.\Start-HealthMonitoring.ps1 -Interval 300
+```
