@@ -1,5 +1,5 @@
 {
-  "name": "vmware-vsan-health",
+  "name": "@uldyssian-sh/vmware-vsan-health",
   "version": "1.0.0",
   "description": "Enterprise automation and management solution",
   "main": "index.js",

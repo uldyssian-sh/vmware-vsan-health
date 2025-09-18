@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+        
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.38.0
+    hooks:
+      - id: markdownlint
+        args: ['--config', '.markdownlint.json']
+        
+  - repo: local
+    hooks:
+      - id: powershell-script-analyzer
+        name: PowerShell Script Analyzer
+        entry: pwsh
+        language: system
+        files: '\.ps1$|\.psm1$|\.psd1$'
+        args: ['-Command', 'Invoke-ScriptAnalyzer -Path $args -Severity Error,Warning']
