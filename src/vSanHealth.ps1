@@ -281,7 +281,7 @@ foreach($c in $vsanClusters){
   # Optional resync overview (read-only, best-effort)
   $resync = $null
   if(Get-Command -Name Get-VsanResyncingOverview -ErrorAction SilentlyContinue){
-    try { $resync = Get-VsanResyncingOverview -Cluster $c -ErrorAction Stop } catch { }
+    try { $resync = Get-VsanResyncingOverview -Cluster $c -ErrorAction Stop } catch { Write-Warning "Failed to get resync overview: $($_.Exception.Message)" }
   }
 
   $report += [pscustomobject]@{

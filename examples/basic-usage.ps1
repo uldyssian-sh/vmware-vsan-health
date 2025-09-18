@@ -21,11 +21,11 @@ foreach ($cluster in $clusters) {
     
     # Check host services
     $hosts = Get-VMHost -Location $cluster
-    foreach ($host in $hosts) {
-        $services = Get-VSanHostServices -VMHost $host
+    foreach ($vmHost in $hosts) {
+        $services = Get-VSanHostServices -VMHost $vmHost
         $failed = $services | Where-Object { -not $_.Running }
         if ($failed) {
-            Write-Warning "Host $($host.Name) has $($failed.Count) failed services"
+            Write-Warning "Host $($vmHost.Name) has $($failed.Count) failed services"
         }
     }
 }
