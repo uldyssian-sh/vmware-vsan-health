@@ -36,13 +36,10 @@ jobs:
         shell: pwsh
         run: |
           Install-Module -Name PSScriptAnalyzer -Force -SkipPublisherCheck
-          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error,Warning
+          $results = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error -Settings ./PSScriptAnalyzerSettings.psd1
           if ($results) {
             $results | Format-Table -AutoSize
-            $errors = $results | Where-Object Severity -eq 'Error'
-            if ($errors) {
-              Write-Error "Security issues found: $($errors.Count) error(s)"
-              exit 1
-            }
+            Write-Error "Critical security issues found: $($results.Count) error(s)"
+            exit 1
           }
-          Write-Host "Security scan completed successfully"
+          Write-Host "Security scan passed"
