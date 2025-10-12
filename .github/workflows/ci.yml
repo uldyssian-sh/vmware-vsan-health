@@ -1,16 +1,16 @@
 name: CI
+
 on:
-
-permissions:
-  contents: read
-  pull-requests: write
-  checks: write
-  actions: read
-
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
