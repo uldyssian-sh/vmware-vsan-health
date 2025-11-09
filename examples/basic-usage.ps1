@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Basic vSAN Health Check Example
 
 # Import the module

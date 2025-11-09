@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Advanced Reporting Example with Multiple Formats
 
 param(

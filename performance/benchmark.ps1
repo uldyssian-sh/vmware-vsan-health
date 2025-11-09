@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Performance Benchmark Script
 
 param(

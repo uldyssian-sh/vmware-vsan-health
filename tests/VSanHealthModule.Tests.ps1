@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 BeforeAll {
     Import-Module "$PSScriptRoot/../src/VSanHealthModule.psm1" -Force
 }

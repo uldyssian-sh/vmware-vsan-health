@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 ﻿<#
 .SYNOPSIS
   Read-only vSAN health & ESXi service status check for vSphere 7/8 (PowerCLI).

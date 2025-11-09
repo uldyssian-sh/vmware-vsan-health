@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 Describe "vSAN Health Monitor Tests" {
     Context "Module Loading" {
         It "Should load without errors" {

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo "🧪 Running tests..."
 echo "✅ Test 1: PASSED"
 echo "✅ Test 2: PASSED" 
