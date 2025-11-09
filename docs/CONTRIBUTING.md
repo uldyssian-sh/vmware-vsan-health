@@ -152,7 +152,6 @@ Describe "Function-Name" {
 
 ### Release Checklist
 - [ ] All tests pass
-- [ ] Documentation updated
 - [ ] Version numbers updated
 - [ ] CHANGELOG.md updated
 - [ ] Security review completed
