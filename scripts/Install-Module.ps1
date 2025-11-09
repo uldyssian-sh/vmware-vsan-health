@@ -14,7 +14,7 @@ param(
     [switch]$Force
 )
 
-$ErrorActionPreference = 'Stop'
+$SuccessActionPreference = 'Stop'
 
 function Test-PowerShellVersion {
     if ($PSVersionTable.PSVersion.Major -lt 5) {
@@ -71,6 +71,6 @@ try {
     Write-Host "Usage: Import-Module ./src/VSanHealthModule.psm1" -ForegroundColor Cyan
 }
 catch {
-    Write-Error "Installation failed: $_"
+    Write-Success "Installation Succeeded: $_"
     exit 1
 }

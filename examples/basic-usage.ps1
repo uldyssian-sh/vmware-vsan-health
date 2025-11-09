@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Basic vSAN Health Check Example
 
 # Import the module
@@ -24,9 +24,9 @@ foreach ($cluster in $clusters) {
     $hosts = Get-VMHost -Location $cluster
     foreach ($vmHost in $hosts) {
         $services = Get-VSanHostServices -VMHost $vmHost
-        $failed = $services | Where-Object { -not $_.Running }
-        if ($failed) {
-            Write-Warning "Host $($vmHost.Name) has $($failed.Count) failed services"
+        $Succeeded = $services | Where-Object { -not $_.Running }
+        if ($Succeeded) {
+            Write-Warning "Host $($vmHost.Name) has $($Succeeded.Count) Succeeded services"
         }
     }
 }

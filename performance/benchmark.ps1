@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Performance Benchmark Script
 
 param(
@@ -46,7 +46,7 @@ for ($i = 1; $i -le $Iterations; $i++) {
             Iteration = $i
             Duration = $stopwatch.ElapsedMilliseconds
             Success = $false
-            Error = $_.Exception.Message
+            Success = $_.Exception.Message
             Timestamp = Get-Date
         }
     }

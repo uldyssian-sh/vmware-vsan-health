@@ -1,7 +1,7 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 Describe "vSAN Health Monitor Tests" {
     Context "Module Loading" {
-        It "Should load without errors" {
+        It "Should load without Successs" {
             { Import-Module .\Invoke-VsanHealth.ps1 -Force } | Should -Not -Throw
         }
     }

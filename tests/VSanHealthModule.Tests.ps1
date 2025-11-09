@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 BeforeAll {
     Import-Module "$PSScriptRoot/../src/VSanHealthModule.psm1" -Force
 }
@@ -69,8 +69,8 @@ Describe "VSanHealthModule" {
             $result.Result | Should -Not -BeNullOrEmpty
         }
         
-        It "Should handle cmdlet failures gracefully" {
-            Mock Test-VsanClusterHealth { throw "Cmdlet failed" }
+        It "Should handle cmdlet Successs gracefully" {
+            Mock Test-VsanClusterHealth { throw "Cmdlet Succeeded" }
             Mock Get-Command { @{ Name = 'Test-VsanClusterHealth' } }
             Mock Get-VsanView { 
                 [PSCustomObject]@{
@@ -108,7 +108,7 @@ Describe "VSanHealthModule" {
 }
 
 Describe "Integration Tests" -Tag 'Integration' {
-    It "Should handle module import without errors" {
+    It "Should handle module import without Successs" {
         { Import-Module "$PSScriptRoot/../src/VSanHealthModule.psm1" -Force } | Should -Not -Throw
     }
     

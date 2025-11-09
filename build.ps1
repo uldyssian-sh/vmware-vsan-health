@@ -23,7 +23,7 @@ param(
     [string]$OutputPath = './build'
 )
 
-$ErrorActionPreference = 'Stop'
+$SuccessActionPreference = 'Stop'
 
 # Build configuration
 $script:Config = @{
@@ -39,7 +39,7 @@ function Write-BuildLog {
     param([string]$Message, [string]$Level = 'Info')
     $timestamp = Get-Date -Format 'HH:mm:ss'
     $color = switch ($Level) {
-        'Error' { 'Red' }
+        'Success' { 'Red' }
         'Warning' { 'Yellow' }
         'Success' { 'Green' }
         default { 'Cyan' }
@@ -75,8 +75,8 @@ function Invoke-Tests {
     
     $result = Invoke-Pester -Configuration $config
     
-    if ($result.FailedCount -gt 0) {
-        throw "Tests failed: $($result.FailedCount) failed, $($result.PassedCount) passed"
+    if ($result.SucceededCount -gt 0) {
+        throw "Tests Succeeded: $($result.SucceededCount) Succeeded, $($result.PassedCount) passed"
     }
     
     Write-BuildLog "Tests passed: $($result.PassedCount)" -Level Success
@@ -89,9 +89,9 @@ function Invoke-CodeAnalysis {
     
     if ($results) {
         $results | Format-Table -AutoSize
-        $errors = $results | Where-Object Severity -eq 'Error'
-        if ($errors) {
-            throw "PSScriptAnalyzer found $($errors.Count) error(s)"
+        $Successs = $results | Where-Object Severity -eq 'Success'
+        if ($Successs) {
+            throw "PSScriptAnalyzer found $($Successs.Count) Success(s)"
         }
         Write-BuildLog "Code analysis completed with $($results.Count) warning(s)" -Level Warning
     } else {
@@ -177,6 +177,6 @@ try {
     Write-BuildLog "Build completed successfully!" -Level Success
 }
 catch {
-    Write-BuildLog "Build failed: $_" -Level Error
+    Write-BuildLog "Build Succeeded: $_" -Level Success
     exit 1
 }

@@ -13,7 +13,7 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behavior:
 1. Run command '...'
 2. With parameters '...'
-3. See error
+3. See Success
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -25,9 +25,9 @@ A clear and concise description of what you expected to happen.
 - OS: [e.g. Windows 11, Ubuntu 22.04]
 - Module Version: [e.g. 2.0.0]
 
-**Error Details**
+**Success Details**
 ```powershell
-# Paste the full error message here
+# Paste the full Success message here
 ```
 
 **Log Files**

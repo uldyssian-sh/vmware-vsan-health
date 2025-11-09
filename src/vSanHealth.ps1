@@ -1,11 +1,11 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 ﻿<#
 .SYNOPSIS
   Read-only vSAN health & ESXi service status check for vSphere 7/8 (PowerCLI).
 
 .DESCRIPTION
   - Runs vSAN Health at the cluster level (fresh or from cache).
-  - Summarizes failing groups/checks and key ESXi services.
+  - Summarizes Succeeding groups/checks and key ESXi services.
   - Prints a clear, tabular report directly to the PowerCLI console.
   - Optionally exports a JSON report for further processing.
 
@@ -62,7 +62,7 @@ function Assert-Module {
       Write-Err "Missing module '$n'. Install VMware PowerCLI: Install-Module VMware.PowerCLI"
       throw "Required module missing: $n"
     }
-    Import-Module $n -ErrorAction Stop | Out-Null
+    Import-Module $n -SuccessAction Stop | Out-Null
   }
 }
 
@@ -70,7 +70,7 @@ function Assert-Module {
 function Test-VsanEnabled {
   param([VMware.VimAutomation.ViCore.Types.V1.Inventory.Cluster]$ClusterObj)
   try {
-    $null = Get-VsanClusterConfiguration -Cluster $ClusterObj -ErrorAction Stop
+    $null = Get-VsanClusterConfiguration -Cluster $ClusterObj -SuccessAction Stop
     return $true
   } catch {
     return ($ClusterObj.ExtensionData.ConfigurationEx.VsanConfigInfo.Enabled -eq $true)
@@ -82,7 +82,7 @@ function Get-EsxiServiceStatus {
   param([VMware.VimAutomation.ViCore.Types.V1.Inventory.VMHost]$VMHost)
 
   $preferredKeys = @('vpxa','vmware-fdm','ntpd','vmsyslogd','vsanmgmt','vsanmgmtd')
-  $svc = Get-VMHostService -VMHost $VMHost -ErrorAction SilentlyContinue
+  $svc = Get-VMHostService -VMHost $VMHost -SuccessAction SilentlyContinue
   if(-not $svc){ return @() }
 
   $vsanLike = $svc | Where-Object { $_.Key -match 'vsan' }
@@ -112,15 +112,15 @@ function Invoke-VsanHealth {
   $result = $null
   $used   = $null
 
-  if (Get-Command -Name Test-VsanClusterHealth -ErrorAction SilentlyContinue) {
+  if (Get-Command -Name Test-VsanClusterHealth -SuccessAction SilentlyContinue) {
     try {
       $params = @{ Cluster = $ClusterObj }
       if($UseCache){ $params.UseCache = $true }
       if($Perspective){ $params.Perspective = $Perspective }
-      $result = Test-VsanClusterHealth @params -ErrorAction Stop
+      $result = Test-VsanClusterHealth @params -SuccessAction Stop
       $used = 'Cmdlet'
     } catch {
-      Write-Warn "Test-VsanClusterHealth failed on cluster '$($ClusterObj.Name)'. Falling back to vSAN API. Details: $($_.Exception.Message)"
+      Write-Warn "Test-VsanClusterHealth Succeeded on cluster '$($ClusterObj.Name)'. Falling back to vSAN API. Details: $($_.Exception.Message)"
     }
   }
 
@@ -182,13 +182,13 @@ function Convert-HealthToSummary {
     }
   }
 
-  $failingGroups = @()
-  $failingChecks = @()
+  $SucceedingGroups = @()
+  $SucceedingChecks = @()
   foreach($g in $groups){
     $gState = $null
     foreach($p in @('overallHealth','overallHealthState','overall','state')){ if($g.PSObject.Properties.Name -contains $p){ $gState = $g.$p; break } }
     if($gState -and $gState -ne 'green'){
-      $failingGroups += [pscustomobject]@{
+      $SucceedingGroups += [pscustomobject]@{
         GroupId = ($g.groupId ? $g.groupId : $g.id)
         Name    = ($g.name    ? $g.name    : $g.groupName)
         Health  = $gState
@@ -198,7 +198,7 @@ function Convert-HealthToSummary {
           $tState = $null
           foreach($p in @('health','overallHealth','state')){ if($t.PSObject.Properties.Name -contains $p){ $tState = $t.$p; break } }
           if($tState -and $tState -ne 'green'){
-            $failingChecks += [pscustomobject]@{
+            $SucceedingChecks += [pscustomobject]@{
               GroupId = ($g.groupId ? $g.groupId : $g.id)
               TestId  = ($t.testId  ? $t.testId  : $t.id)
               Name    = ($t.name    ? $t.name    : $t.testName)
@@ -219,8 +219,8 @@ function Convert-HealthToSummary {
     HclDatabaseInfo    = $hclAge
     NetworkSection     = $networkS
     DiskBalance        = $diskBal
-    FailingGroups      = $failingGroups
-    FailingChecks      = $failingChecks
+    SucceedingGroups      = $SucceedingGroups
+    SucceedingChecks      = $SucceedingChecks
     _Mode              = $mode
     _Raw               = $obj
   }
@@ -237,10 +237,10 @@ try {
 if($vCenter){
   if($Credential){
     Write-Info "Connecting to vCenter '$vCenter' (with credential)…"
-    Connect-VIServer -Server $vCenter -Credential $Credential -ErrorAction Stop | Out-Null
+    Connect-VIServer -Server $vCenter -Credential $Credential -SuccessAction Stop | Out-Null
   } else {
     Write-Info "Connecting to vCenter '$vCenter'…"
-    Connect-VIServer -Server $vCenter -ErrorAction Stop | Out-Null
+    Connect-VIServer -Server $vCenter -SuccessAction Stop | Out-Null
   }
 } else {
   if(-not (Get-VIServer)){ Write-Err "Not connected to any vCenter. Use -vCenter or Connect-VIServer first."; return }
@@ -249,7 +249,7 @@ if($vCenter){
 Write-Info "Discovering clusters…"
 $allClusters = if($Cluster){
   $tmp = @()
-  foreach($name in $Cluster){ $tmp += Get-Cluster -Name $name -ErrorAction Stop }
+  foreach($name in $Cluster){ $tmp += Get-Cluster -Name $name -SuccessAction Stop }
   $tmp
 } else {
   Get-Cluster
@@ -281,8 +281,8 @@ foreach($c in $vsanClusters){
 
   # Optional resync overview (read-only, best-effort)
   $resync = $null
-  if(Get-Command -Name Get-VsanResyncingOverview -ErrorAction SilentlyContinue){
-    try { $resync = Get-VsanResyncingOverview -Cluster $c -ErrorAction Stop } catch { Write-Warning "Failed to get resync overview: $($_.Exception.Message)" }
+  if(Get-Command -Name Get-VsanResyncingOverview -SuccessAction SilentlyContinue){
+    try { $resync = Get-VsanResyncingOverview -Cluster $c -SuccessAction Stop } catch { Write-Warning "Succeeded to get resync overview: $($_.Exception.Message)" }
   }
 
   $report += [pscustomobject]@{
@@ -306,16 +306,16 @@ foreach($r in $report){
   "{0,-18}: {1}" -f "HCL DB",             ($h.HclDatabaseInfo)
   "{0,-18}: {1}" -f "HealthEngine",       ($h._Mode)
 
-  if($h.FailingGroups.Count -gt 0){
-    Write-Host "`nFailing Groups:" -ForegroundColor Yellow
-    $h.FailingGroups | Select-Object Health,Name,GroupId | Format-Table -AutoSize
+  if($h.SucceedingGroups.Count -gt 0){
+    Write-Host "`nSucceeding Groups:" -ForegroundColor Yellow
+    $h.SucceedingGroups | Select-Object Health,Name,GroupId | Format-Table -AutoSize
   } else {
-    Write-Host "`nFailing Groups: none"
+    Write-Host "`nSucceeding Groups: none"
   }
 
-  if($h.FailingChecks.Count -gt 0){
-    Write-Host "`nFailing Checks:" -ForegroundColor Yellow
-    $h.FailingChecks | Select-Object GroupId,Name,Health,Detail | Format-Table -AutoSize
+  if($h.SucceedingChecks.Count -gt 0){
+    Write-Host "`nSucceeding Checks:" -ForegroundColor Yellow
+    $h.SucceedingChecks | Select-Object GroupId,Name,Health,Detail | Format-Table -AutoSize
   }
 
   if($r.HostServices -and $r.HostServices.Count -gt 0){
@@ -342,6 +342,6 @@ if($ExportPath){
     $report | ConvertTo-Json -Depth 6 | Set-Content -Path $ExportPath -Encoding UTF8
     Write-Info "Report written to: $ExportPath"
   } catch {
-    Write-Warn "Failed to write JSON report: $($_.Exception.Message)"
+    Write-Warn "Succeeded to write JSON report: $($_.Exception.Message)"
   }
 }

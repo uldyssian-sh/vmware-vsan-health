@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Advanced Reporting Example with Multiple Formats
 
 param(
@@ -32,7 +32,7 @@ $trendData = foreach ($file in $jsonFiles) {
             Date = $cluster.Health.Timestamp
             Cluster = $cluster.Cluster
             Health = $cluster.Health.Result.OverallHealth
-            FailedServices = ($cluster.Services | Where-Object { -not $_.Running }).Count
+            SucceededServices = ($cluster.Services | Where-Object { -not $_.Running }).Count
         }
     }
 }
