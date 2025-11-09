@@ -37,4 +37,4 @@ $trendData = foreach ($file in $jsonFiles) {
 }
 
 $trendData | Export-Csv -Path "$ReportPath\health-trend.csv" -NoTypeInformation
-Write-Host "Trend analysis saved to: $ReportPath\health-trend.csv" -ForegroundColor Green
+Write-Host "Trend analysis saved to: $ReportPath\health-trend.csv" -ForegroundColor Green# Updated Sun Nov  9 12:52:40 CET 2025

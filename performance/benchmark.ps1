@@ -71,4 +71,4 @@ Write-Host "Average Duration: $($report.AverageDuration)ms" -ForegroundColor Cya
 Write-Host "Min Duration: $($report.MinDuration)ms" -ForegroundColor Cyan  
 Write-Host "Max Duration: $($report.MaxDuration)ms" -ForegroundColor Cyan
 Write-Host "Success Rate: $(($report.SuccessfulRuns / $report.TotalIterations * 100))%" -ForegroundColor Cyan
-Write-Host "Report saved: $reportPath" -ForegroundColor Yellow
+Write-Host "Report saved: $reportPath" -ForegroundColor Yellow# Updated Sun Nov  9 12:52:40 CET 2025

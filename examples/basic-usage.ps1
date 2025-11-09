@@ -30,4 +30,4 @@ foreach ($cluster in $clusters) {
     }
 }
 
-Disconnect-VIServer -Confirm:$false
+Disconnect-VIServer -Confirm:$false# Updated Sun Nov  9 12:52:40 CET 2025
