@@ -14,7 +14,6 @@
 ## 🔧 Implemented Improvements
 
 ### Security Enhancements
-- ✅ Updated GitHub Actions to v4 for enhanced security
 - ✅ Added comprehensive security scanning workflow (Trivy + PSScriptAnalyzer)
 - ✅ Fixed npm package scoping (@uldyssian-sh/vmware-vsan-health)
 - ✅ Implemented signed commits verification
@@ -35,7 +34,6 @@
 
 ### Documentation
 - ✅ Fixed broken documentation links in README.md
-- ✅ Updated module import paths
 - ✅ Enhanced API documentation references
 
 ## 🛡️ Security Compliance

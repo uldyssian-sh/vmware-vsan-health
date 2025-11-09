@@ -125,4 +125,3 @@ Describe "Integration Tests" -Tag 'Integration' {
             $exportedFunctions | Should -Contain $func
         }
     }
-}# Updated 20251109_123837

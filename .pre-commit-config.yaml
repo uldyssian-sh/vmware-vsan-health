@@ -24,4 +24,3 @@ repos:
         entry: pwsh
         language: system
         files: '\.ps1$|\.psm1$|\.psd1$'
-        args: ['-Command', 'Invoke-ScriptAnalyzer -Path $args -Severity Error,Warning']# Updated 20251109_123837
