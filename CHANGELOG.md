@@ -49,4 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Read-only operations
 
 [Unreleased]: https://github.com/uldyssian-sh/vmware-vsan-health/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/uldyssian-sh/vmware-vsan-health/releases/tag/v1.0.0
+[1.0.0]: https://github.com/uldyssian-sh/vmware-vsan-health/releases/tag/v1.0.0# Updated 20251109_123837
