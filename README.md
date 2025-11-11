@@ -1,5 +1,11 @@
 # VMware vSAN Health
 
+[![License](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health?style=flat-square)](LICENSE)
+[![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)](#)
+[![Languages](https://img.shields.io/github/languages/count/uldyssian-sh/vmware-vsan-health?style=flat-square)](#)
+[![Size](https://img.shields.io/github/repo-size/uldyssian-sh/vmware-vsan-health?style=flat-square)](#)
+[![Security Scan](https://img.shields.io/badge/security-scanned-green?style=flat-square)](#)
+
 [![GitHub license](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health)](https://github.com/uldyssian-sh/vmware-vsan-health/blob/main/LICENSE)
 [![CI](https://github.com/uldyssian-sh/vmware-vsan-health/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vmware-vsan-health/actions)
 
@@ -30,6 +36,12 @@ VMware vSAN health monitoring and diagnostic automation tool. Provides comprehen
 
 ```powershell
 # Clone repository
+
+[![License](https://img.shields.io/github/license/uldyssian-sh/vmware-vsan-health?style=flat-square)](LICENSE)
+[![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)](#)
+[![Languages](https://img.shields.io/github/languages/count/uldyssian-sh/vmware-vsan-health?style=flat-square)](#)
+[![Size](https://img.shields.io/github/repo-size/uldyssian-sh/vmware-vsan-health?style=flat-square)](#)
+[![Security Scan](https://img.shields.io/badge/security-scanned-green?style=flat-square)](#)
 git clone https://github.com/uldyssian-sh/vmware-vsan-health.git
 cd vmware-vsan-health
 
